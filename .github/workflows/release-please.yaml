@@ -37,5 +37,5 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release upload ${{ needs: release-please.outputs.tag_name }} k8s-deployment.yaml k8s-secrets.yaml
+          gh release upload ${{ needs: release-please.outputs.tag_name }} k8s/deployment.yaml k8s/secrets.yaml
 
