@@ -1,0 +1,13 @@
+node_modules
+data/*.sqlite
+.git
+.github
+.gitea
+README.md
+requirements.md
+GEMINI.md
+Dockerfile
+docker-compose.yml
+k8s-*.yaml
+.env
+.env.*
