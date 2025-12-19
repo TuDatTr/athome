@@ -1,0 +1,53 @@
+{
+  "realm": "athomev2",
+  "enabled": true,
+  "users": [
+    {
+      "username": "admin_user",
+      "enabled": true,
+      "email": "admin@example.com",
+      "firstName": "Admin",
+      "lastName": "User",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["admin"]
+    }
+  ],
+  "roles": {
+    "realm": [
+      {
+        "name": "admin",
+        "description": "Administrative User"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "athomev2-client",
+      "name": "athomev2 Client",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "your-secret-here",
+      "redirectUris": [
+        "http://localhost:3001/admin/callback"
+      ],
+      "webOrigins": [
+        "http://localhost:3001"
+      ],
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "publicClient": false,
+      "protocol": "openid-connect",
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "http://localhost:3001"
+      }
+    }
+  ]
+}
