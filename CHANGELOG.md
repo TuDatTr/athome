@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/TuDatTr/athome/compare/v1.1.0...v1.1.1) (2025-12-19)
+
+
+### Bug Fixes
+
+* use PAT for ghcr upload ([7fb6410](https://github.com/TuDatTr/athome/commit/7fb6410b9546eecc9a02f531c28bbf38ee93fd44))
+
 ## [1.1.0](https://github.com/TuDatTr/athome/compare/v1.0.0...v1.1.0) (2025-12-19)
 
 
