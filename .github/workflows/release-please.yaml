@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  release-please:
+  release_please:
     runs-on: ubuntu-latest
     # IMPORTANT: Ensure "Allow GitHub Actions to create and approve pull requests" 
     # is ENABLED in your repository settings (Settings > Actions > General).
@@ -23,9 +23,9 @@ jobs:
         with:
           release-type: node
 
-  upload-assets:
-    needs: release-please
-    if: ${{ needs: release-please.outputs.release_created }}
+  upload_assets:
+    needs: release_please
+    if: ${{ needs.release_please.outputs.release_created }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -37,5 +37,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release upload ${{ needs: release-please.outputs.tag_name }} k8s/deployment.yaml k8s/secrets.yaml
-
+          gh release upload ${{ needs.release_please.outputs.tag_name }} k8s/deployment.yaml k8s/secrets.yaml
