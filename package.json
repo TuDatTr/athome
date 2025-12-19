@@ -1,6 +1,6 @@
 {
   "name": "athomev2",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "module": "src/index.tsx",
   "type": "module",
   "private": true,
