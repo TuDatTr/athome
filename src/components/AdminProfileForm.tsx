@@ -32,6 +32,14 @@ export const AdminProfileForm = ({ profile, lang }: { profile: Profile; lang: st
           <label class="block text-sm font-medium mb-1">GitHub URL</label>
           <input type="text" name="github_url" value={profile.github_url} class="w-full p-2 border rounded dark:bg-gray-900 dark:border-gray-700" />
         </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Twitter URL</label>
+          <input type="text" name="twitter_url" value={profile.twitter_url} class="w-full p-2 border rounded dark:bg-gray-900 dark:border-gray-700" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Website URL</label>
+          <input type="text" name="website_url" value={profile.website_url} class="w-full p-2 border rounded dark:bg-gray-900 dark:border-gray-700" />
+        </div>
       </div>
       <div>
         <label class="block text-sm font-medium mb-1">About Me ({lang.toUpperCase()})</label>

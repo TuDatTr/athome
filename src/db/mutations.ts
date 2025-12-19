@@ -5,21 +5,23 @@ export async function upsertProfile(data: {
     phone: string;
     github_url: string;
     linkedin_url: string;
+    twitter_url?: string;
+    website_url?: string;
 }) {
     const existing = await db.get("SELECT id FROM profile WHERE id = 1")
     if (existing) {
         await db.run(`
             UPDATE profile 
-            SET email = ?, phone = ?, github_url = ?, linkedin_url = ?
+            SET email = ?, phone = ?, github_url = ?, linkedin_url = ?, twitter_url = ?, website_url = ?
             WHERE id = 1
-        `, [data.email, data.phone, data.github_url, data.linkedin_url])
+        `, [data.email, data.phone, data.github_url, data.linkedin_url, data.twitter_url || '', data.website_url || ''])
         return 1
     } else {
         const result = await db.get(`
-            INSERT INTO profile (email, phone, github_url, linkedin_url)
-            VALUES (?, ?, ?, ?)
+            INSERT INTO profile (email, phone, github_url, linkedin_url, twitter_url, website_url)
+            VALUES (?, ?, ?, ?, ?, ?)
             RETURNING id
-        `, [data.email, data.phone, data.github_url, data.linkedin_url]) as { id: number }
+        `, [data.email, data.phone, data.github_url, data.linkedin_url, data.twitter_url || '', data.website_url || '']) as { id: number }
         return result.id
     }
 }

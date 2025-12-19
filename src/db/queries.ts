@@ -6,6 +6,8 @@ export interface Profile {
     phone: string;
     github_url: string;
     linkedin_url: string;
+    twitter_url: string;
+    website_url: string;
     name: string;
     title: string;
     about_me: string;

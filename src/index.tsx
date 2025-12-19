@@ -54,6 +54,9 @@ app.get('/', async (c) => {
                 <span>📍 {profile.location}</span>
                 <span>📧 {profile.email}</span>
                 <span>📱 {profile.phone}</span>
+                {profile.github_url && <span><a href={profile.github_url} target="_blank" class="text-blue-600 hover:underline">GitHub</a></span>}
+                {profile.twitter_url && <span><a href={profile.twitter_url} target="_blank" class="text-blue-600 hover:underline">Twitter</a></span>}
+                {profile.website_url && <span><a href={profile.website_url} target="_blank" class="text-blue-600 hover:underline">Website</a></span>}
               </div>
             </div>
           </section>
@@ -248,7 +251,14 @@ app.get('/admin/profile', async (c) => {
 
 app.post('/admin/profile', async (c) => {
   const lang = c.req.query('lang') || 'en'; const body = await c.req.parseBody()
-  const profileId = await upsertProfile({ email: body.email as string, phone: body.phone as string, github_url: body.github_url as string, linkedin_url: '' })
+  const profileId = await upsertProfile({ 
+    email: body.email as string, 
+    phone: body.phone as string, 
+    github_url: body.github_url as string, 
+    linkedin_url: '', 
+    twitter_url: body.twitter_url as string,
+    website_url: body.website_url as string
+  })
   await upsertProfileTranslation({ profile_id: profileId, language_code: lang as string, name: body.name as string, title: body.title as string, about_me: body.about_me as string, location: body.location as string })
   return c.html(<span class="text-green-600">Successfully updated!</span>)
 })
