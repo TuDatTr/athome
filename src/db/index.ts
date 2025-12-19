@@ -85,7 +85,7 @@ const createAdapter = (): AsyncDatabaseAdapter => {
                 let count = 0;
                 const pgSql = query.replace(/\?/g, () => `$${++count}`);
                 const rows = await sql.unsafe(pgSql, params);
-                return rows[0] || null;
+                return (rows[0] as any) || null;
             },
             run: async (query, params = []) => {
                 let count = 0;
