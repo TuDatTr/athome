@@ -12,11 +12,13 @@ permissions:
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    # IMPORTANT: Ensure "Allow GitHub Actions to create and approve pull requests" 
+    # is ENABLED in your repository settings (Settings > Actions > General).
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
-      - uses: google-github-actions/release-please-action@v4
+      - uses: googleapis/release-please-action@v4
         id: release
         with:
           release-type: node
