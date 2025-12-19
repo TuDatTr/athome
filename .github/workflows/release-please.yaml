@@ -26,7 +26,6 @@ jobs:
         id: release
         with:
           release-type: node
-          token: ${{ secrets.MY_RELEASE_TOKEN }}
 
   upload_assets:
     needs: release_please
