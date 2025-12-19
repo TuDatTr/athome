@@ -22,3 +22,20 @@ jobs:
         id: release
         with:
           release-type: node
+
+  upload-assets:
+    needs: release-please
+    if: ${{ needs: release-please.outputs.release_created }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Upload Kubernetes Manifests
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload ${{ needs: release-please.outputs.tag_name }} k8s-deployment.yaml k8s-secrets.yaml
+
