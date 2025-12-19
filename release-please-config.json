@@ -2,7 +2,7 @@
   "packages": {
     ".": {
       "release-type": "node",
-      "package-name": "athomev2",
+      "package-name": "athome",
       "include-component-in-tag": false
     }
   },

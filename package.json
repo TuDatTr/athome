@@ -1,5 +1,5 @@
 {
-  "name": "athomev2",
+  "name": "athome",
   "version": "1.0.0",
   "module": "src/index.tsx",
   "type": "module",
