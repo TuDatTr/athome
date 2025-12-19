@@ -12,8 +12,12 @@ permissions:
 jobs:
   release_please:
     runs-on: ubuntu-latest
-    # IMPORTANT: Ensure "Allow GitHub Actions to create and approve pull requests" 
-    # is ENABLED in your repository settings (Settings > Actions > General).
+    # IMPORTANT: Ensure the following are set in Settings > Actions > General:
+    # 1. Workflow permissions -> "Read and write permissions"
+    # 2. Allow GitHub Actions to create and approve pull requests -> ENABLED
+    permissions:
+      contents: write
+      pull-requests: write
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
